@@ -1,9 +1,13 @@
 import { UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
 import { UploadForm } from "@/components/upload-form";
 
 export default async function Home() {
+  const { userId } = await auth();
+  if (!userId) redirect("/sign-in");
   const admin = await requireAdmin();
   return (
     <main>

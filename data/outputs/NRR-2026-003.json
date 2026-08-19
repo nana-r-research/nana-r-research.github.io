@@ -1,0 +1,50 @@
+{
+  "id": "NRR-2026-003",
+  "language": "en",
+  "journal": {
+    "name": "The Kobe journal of the medical sciences",
+    "year": 2026,
+    "volume": "70",
+    "issue": "3",
+    "pages": "93-99",
+    "doi": "10.24546/0100491788",
+    "url": "https://doi.org/10.24546/0100491788"
+  },
+  "repository_file": {
+    "type": "Published Version",
+    "url": "/files/NRR-2026-003.pdf",
+    "posted": "2026-08-19"
+  },
+  "title": "Role of a Home-visit Nursing Agency in Supporting Patients with Heart Failure on Continuous Catecholamine Infusion: A Case Series Study",
+  "authors": [
+    {
+      "name": "Takemasa Ishikawa"
+    },
+    {
+      "name": "Ryoko Sekiguchi"
+    },
+    {
+      "name": "Tomoko Shimizu"
+    },
+    {
+      "name": "Yuka Fukata"
+    },
+    {
+      "name": "Reiko Kanaya"
+    },
+    {
+      "name": "Kumiko Katsuma"
+    }
+  ],
+  "affiliations": [
+    "Nana-r Home-visit Nursing Development Center",
+    "Nana-r Home-visit Nursing Station"
+  ],
+  "abstract": "AIM: This study aimed to discuss the role of home-visit nurses in managing continuous catecholamine infusion in patients with heart failure by investigating the outcome of patients and the home-visit nursing intervention. METHODS: We conducted a retrospective, case series study of eight patients with heart failure who underwent home-based continuous catecholamine infusion between April 2016 and March 2024. Data including the patients’ demographics, the duration of continuous catecholamine infusion, the frequency of nursing and emergency nursing visits, and patients’ endpoints were collected. RESULTS: The median age of the patients was 68.5 (interquartile range: 51.8–80.0) years and 75% were men. The most common diagnosis requiring home-based catecholamine infusion was dilated cardiomyopathy. The median duration of continuous catecholamine infusion in the patients was 58.0 days. The median frequency of nursing visits was 8.4 times each week. Forty-five emergency nursing visits occurred, and the most common reason for these visits was managing infusion device malfunctions. Among the patients, six died at home, one was hospitalized owing to fatal arrhythmia, and one withdrew from continuous catecholamine infusion. CONCLUSION: This study shows the complexities of providing home-based care for patients with heart failure requiring continuous catecholamine infusion. Most patients with heart failure were able to spend the rest of their lives at home, despite the challenges of managing such a treatment outside the hospital. Our findings indicate the need for early intervention, multidisciplinary collaboration, and the development of home care protocols to optimize treatment efficacy and the quality of life of these patients.",
+  "keywords": [
+    "Cardiomyopathy",
+    "Catecholamines",
+    "Heart Failure",
+    "Home-visit nursing"
+  ]
+}

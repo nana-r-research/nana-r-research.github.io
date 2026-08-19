@@ -19,3 +19,7 @@
 ## GitHub Pagesで公開する
 
 GitHubリポジトリの Pages 設定で Source を **GitHub Actions** にします。`main` へのpush後、同梱ワークフローがサイトを公開します。
+
+## 管理画面
+
+`admin/` は、GitHubを操作せずにPDFと書誌情報を登録するVercel向け管理画面です。設定方法は `admin/README.md` を参照してください。

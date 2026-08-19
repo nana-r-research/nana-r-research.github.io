@@ -3,12 +3,14 @@ import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
+import { listPublicationDrafts } from "@/lib/github";
 import { UploadForm } from "@/components/upload-form";
 
 export default async function Home() {
   const { userId } = await auth();
   if (!userId) redirect("/sign-in");
   const admin = await requireAdmin();
+  const publications = await listPublicationDrafts();
   return (
     <main>
       <header className="app-header">
@@ -23,7 +25,7 @@ export default async function Home() {
           <h1>研究成果を登録</h1>
           <p>PDFと書誌情報を入力すると、公開サイトへ自動的に追加されます。</p>
         </div>
-        <UploadForm />
+        <UploadForm publications={publications} />
       </div>
     </main>
   );

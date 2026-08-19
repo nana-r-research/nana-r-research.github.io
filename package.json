@@ -1,0 +1,13 @@
+{
+  "name": "nana-r-research-repository",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/generate.mjs && node scripts/serve.mjs",
+    "build": "node scripts/generate.mjs",
+    "test": "npm run build && node --test tests/site.test.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "type": "module"
+}

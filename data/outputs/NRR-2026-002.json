@@ -1,0 +1,37 @@
+{
+  "id": "NRR-2026-002",
+  "sample": true,
+  "language": "ja",
+  "title": {
+    "ja": "日本語論文の表示例（サンプル）",
+    "en": "Display Example for a Japanese-language Article (Sample)"
+  },
+  "authors": [
+    { "name": { "ja": "著者名", "en": "Author Name" } }
+  ],
+  "affiliations": [
+    { "ja": "所属機関名", "en": "Affiliation" }
+  ],
+  "journal": {
+    "name": { "ja": "学術誌名", "en": "Journal Name" },
+    "year": 2026,
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "doi": "",
+    "url": ""
+  },
+  "repository_file": {
+    "type": "Author Accepted Manuscript",
+    "url": "",
+    "posted": "2026-08-19"
+  },
+  "abstract": {
+    "ja": "日本語論文の書誌情報を日本語・英語で切り替えるためのサンプルです。実在する研究成果ではありません。",
+    "en": "This sample demonstrates bilingual metadata for a Japanese-language article. It is not a real research output."
+  },
+  "keywords": {
+    "ja": ["表示例", "日本語論文"],
+    "en": ["display example", "Japanese-language article"]
+  }
+}

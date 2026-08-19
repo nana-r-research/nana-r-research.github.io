@@ -1,3 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
 test('Japanese and English pages exist',()=>{for(const p of ['dist/ja/index.html','dist/en/index.html','dist/ja/outputs/index.html','dist/en/policy/index.html'])assert.ok(fs.existsSync(p),p)});
 test('logo and labelled sample are rendered',()=>{const html=fs.readFileSync('dist/ja/index.html','utf8');assert.match(html,/nana-r-logo\.png/);assert.match(html,/実在する論文ではありません/)});
+test('Japanese article metadata switches language on the same record',()=>{const ja=fs.readFileSync('dist/ja/outputs/nrr-2026-002/index.html','utf8');const en=fs.readFileSync('dist/en/outputs/nrr-2026-002/index.html','utf8');assert.match(ja,/日本語論文の表示例/);assert.match(en,/Display Example for a Japanese-language Article/);assert.match(ja,/href="\/en\/outputs\/nrr-2026-002\/"/)});
+test('promotional blocks and left-accent cards are absent',()=>{const html=fs.readFileSync('dist/ja/index.html','utf8');const css=fs.readFileSync('dist/assets/site.css','utf8');assert.doesNotMatch(html,/研究成果の公開|出版社版への導線|公開原稿へのアクセス/);assert.doesNotMatch(css,/border-left:4px/)});

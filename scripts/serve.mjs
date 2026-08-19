@@ -1,0 +1,3 @@
+import http from 'node:http';import fs from 'node:fs';import path from 'node:path';
+const base=path.resolve('dist');
+http.createServer((req,res)=>{let rel=decodeURIComponent((req.url||'/').split('?')[0]);let file=path.join(base,rel);if(rel.endsWith('/'))file=path.join(file,'index.html');if(!file.startsWith(base)){res.writeHead(403).end();return}fs.readFile(file,(err,data)=>{if(err){res.writeHead(404).end('Not found');return}const ext=path.extname(file);res.setHeader('content-type',ext==='.html'?'text/html; charset=utf-8':ext==='.css'?'text/css':ext==='.js'?'text/javascript':ext==='.png'?'image/png':'application/octet-stream');res.end(data)})}).listen(3000,'127.0.0.1',()=>console.log('Local site: http://127.0.0.1:3000/ja/'));

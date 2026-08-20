@@ -1,0 +1,93 @@
+{
+  "id": "NRR-2026-006",
+  "language": "ja",
+  "journal": {
+    "name": {
+      "ja": "日本在宅医療連合学会誌",
+      "en": "Journal of Japanese Association for Home Care Medicine Online ISSN : 2435-4007"
+    },
+    "year": 2026,
+    "volume": "6",
+    "issue": "1",
+    "pages": "10-18",
+    "doi": "10.34458/jahcm.6.1_10",
+    "url": "https://doi.org/10.34458/jahcm.6.1_10"
+  },
+  "repository_file": {
+    "type": "Author Accepted Manuscript",
+    "url": "",
+    "posted": "2026-08-20"
+  },
+  "title": {
+    "ja": "本研究は，訪問看護導入時の訪問看護回数とその後の入院・施設入所との関連を検証した．1訪問看護事業所において2016年4月～2023年12月に訪問看護を終了した65歳以上の利用者468名を対象とした．対象者の入院・施設入所を目的変数，訪問看護開始2週間の訪問回数を説明変数としたロジスティック回帰分析を行った．基本属性や生活自立度などを共変数として調整したロジスティック回帰分析により，入院・施設入所に対する訪問看護開始2週間の訪問回数のオッズ比（95%信頼区間）は，0.93（0.89-0.97）であった．高齢療養者の初期の訪問看護回数が，その後の入院・施設入所に関連することが示唆された．",
+    "en": "The Impact of Home-visit Nursing Frequency in the First Two Weeks on Hospitalization and Institutionalization: A Retrospective Study Using Nursing Records"
+  },
+  "authors": [
+    {
+      "name": {
+        "ja": "石川 武雅",
+        "en": "Takemasa Ishikawa"
+      }
+    },
+    {
+      "name": {
+        "ja": "関口 亮子",
+        "en": "Ryoko Sekiguchi"
+      }
+    },
+    {
+      "name": {
+        "ja": "深田 悠花",
+        "en": "Yuka Fukata"
+      }
+    },
+    {
+      "name": {
+        "ja": "金谷 玲子",
+        "en": "Reiko Kanaya"
+      }
+    },
+    {
+      "name": {
+        "ja": "清水 知子",
+        "en": "Tomoko Shimizu"
+      }
+    },
+    {
+      "name": {
+        "ja": "勝眞 久美子",
+        "en": "Kumiko Katsuma"
+      }
+    }
+  ],
+  "affiliations": [
+    {
+      "ja": "ななーる訪問看護デベロップメントセンター",
+      "en": "Nana-r Home-visit Nursing Development Center"
+    },
+    {
+      "ja": "ななーる訪問看護ステーション",
+      "en": "Nana-r Home-visit Nursing Station"
+    }
+  ],
+  "abstract": {
+    "ja": "本研究は，訪問看護導入時の訪問看護回数とその後の入院・施設入所との関連を検証した．1訪問看護事業所において2016年4月～2023年12月に訪問看護を終了した65歳以上の利用者468名を対象とした．対象者の入院・施設入所を目的変数，訪問看護開始2週間の訪問回数を説明変数としたロジスティック回帰分析を行った．基本属性や生活自立度などを共変数として調整したロジスティック回帰分析により，入院・施設入所に対する訪問看護開始2週間の訪問回数のオッズ比（95%信頼区間）は，0.93（0.89-0.97）であった．高齢療養者の初期の訪問看護回数が，その後の入院・施設入所に関連することが示唆された．",
+    "en": "This study aimed to examine the association between the number of nursing visits in the first two weeks and subsequent hospitalization or institutionalization through a retrospective review of home-visit nursing records. We included 468 patients aged 65 and over who completed home-visit nursing services at the Nana-r Home-visit Nursing Station from April 2016 to December 2023. A logistic regression analysis was conducted with hospitalization or institutionalization as the dependent variable and the number of nursing visits within the first two weeks as the independent variable. Covariates included age, gender, terminal diagnosis (life expectancy < 6 months), family involvement, and the degree of independence for disabled and demented elderly. Analyses were conducted using JMP (Version 17.2) with the significance level set at 5%. The cohort comprised 236 men (50.4%) and had a median age of 83 years (IQR:78-89). End outcomes were home death (n = 163, 34.8%), hospitalization (n = 152, 32.5%), improvement (n = 84, 17.9%), and institutionalization (n = 69, 14.7%). The median number of visits was 4 (IQR:2-10). The odds ratio (95% confidence interval) for hospitalization or institutionalization in relation to the number of nursing visits in the first two weeks of home-visit nursing was 0.93 (0.89-0.97). These findings suggest that the number of nursing visits during the initial two weeks is likely associated with subsequent hospitalization or institutionalization among older adults receiving home care."
+  },
+  "keywords": {
+    "ja": [
+      "訪問看護",
+      "看護記録",
+      "入院",
+      "施設入所",
+      "高齢療養者"
+    ],
+    "en": [
+      "home-visit nursing",
+      "nursing record",
+      "hospitalization",
+      "institutionalization",
+      "older people"
+    ]
+  }
+}

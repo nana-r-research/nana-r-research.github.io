@@ -5,12 +5,14 @@ import { execFileSync } from 'node:child_process';
 
 test('Japanese and English pages exist',()=>{for(const p of ['dist/ja/index.html','dist/en/index.html','dist/ja/outputs/index.html','dist/en/policy/index.html'])assert.ok(fs.existsSync(p),p)});
 
-test('empty repository is clear and contains no persistent sample records',()=>{
+test('repository contains no persistent sample records',()=>{
   const html=fs.readFileSync('dist/ja/index.html','utf8');
   const records=fs.readdirSync('data/outputs').filter((name)=>name.endsWith('.json'));
-  assert.deepEqual(records,[]);
+  const data=records.map((name)=>JSON.parse(fs.readFileSync(`data/outputs/${name}`,'utf8')));
+  assert.ok(data.every((record)=>record.sample!==true));
   assert.match(html,/nana-r-logo\.png/);
-  assert.match(html,/現在、公開中の研究成果はありません/);
+  if(records.length===0) assert.match(html,/現在、公開中の研究成果はありません/);
+  else for(const record of data) assert.match(html,new RegExp(record.id));
 });
 
 test('promotional blocks and left-accent cards are absent',()=>{const html=fs.readFileSync('dist/ja/index.html','utf8');const css=fs.readFileSync('dist/assets/site.css','utf8');assert.doesNotMatch(html,/研究成果の公開|出版社版への導線|公開原稿へのアクセス/);assert.doesNotMatch(css,/border-left:4px/)});
@@ -24,6 +26,7 @@ test('license renders and an omitted abstract creates no empty section',()=>{
     const html=fs.readFileSync('dist/en/outputs/nrr-2099-999/index.html','utf8');
     assert.match(html,/Creative Commons Attribution 4\.0 International/);
     assert.match(html,/creativecommons\.org\/licenses\/by\/4\.0/);
+    assert.match(html,/No file provided/);
     assert.doesNotMatch(html,/<h2>Abstract<\/h2>/);
   }finally{
     fs.rmSync(fixture,{force:true});

@@ -5,6 +5,16 @@ import { execFileSync } from 'node:child_process';
 
 test('Japanese and English pages plus crawler files exist',()=>{for(const p of ['dist/ja/index.html','dist/en/index.html','dist/ja/outputs/index.html','dist/en/policy/index.html','dist/robots.txt','dist/sitemap.xml'])assert.ok(fs.existsSync(p),p);assert.match(fs.readFileSync('dist/robots.txt','utf8'),/Sitemap: https:\/\/nana-r-research\.github\.io\/sitemap\.xml/)});
 
+test('social cards are configured for the root and content pages',()=>{
+  assert.ok(fs.statSync('dist/assets/social-card.png').size>0);
+  for(const file of ['dist/index.html','dist/ja/index.html','dist/en/outputs/nrr-2026-003/index.html']){
+    const html=fs.readFileSync(file,'utf8');
+    for(const tag of ['og:title','og:description','og:url','og:image','og:image:width','og:image:height']) assert.match(html,new RegExp(`property="${tag}"`));
+    assert.match(html,/name="twitter:card" content="summary_large_image"/);
+    assert.match(html,/name="twitter:image" content="https:\/\/nana-r-research\.github\.io\/assets\/social-card\.png"/);
+  }
+});
+
 test('repository contains no persistent sample records',()=>{
   const html=fs.readFileSync('dist/ja/index.html','utf8');
   const listingHtml=fs.readFileSync('dist/ja/outputs/index.html','utf8');

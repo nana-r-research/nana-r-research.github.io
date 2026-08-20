@@ -13,7 +13,11 @@
   "repository_file": {
     "type": "Published Version",
     "url": "/files/NRR-2026-003.pdf",
-    "posted": "2026-08-19"
+    "posted": "2026-08-19",
+    "license": {
+      "name": "Creative Commons Attribution-NoDerivatives 4.0 International",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/"
+    }
   },
   "title": "Role of a Home-visit Nursing Agency in Supporting Patients with Heart Failure on Continuous Catecholamine Infusion: A Case Series Study",
   "authors": [

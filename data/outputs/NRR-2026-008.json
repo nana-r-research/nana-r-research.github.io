@@ -1,0 +1,75 @@
+{
+  "id": "NRR-2026-008",
+  "language": "ja",
+  "journal": {
+    "name": {
+      "ja": "ナーシングケアコネクトジャーナル",
+      "en": "Nursing Care Connect Journal"
+    },
+    "year": 2025,
+    "volume": "2",
+    "issue": "1",
+    "pages": "1-7",
+    "doi": "10.69215/nccj.2.1_1",
+    "url": "https://doi.org/10.69215/nccj.2.1_1"
+  },
+  "repository_file": {
+    "type": "Author Accepted Manuscript",
+    "url": "/files/NRR-2026-008.pdf",
+    "posted": "2026-08-20",
+    "license": {
+      "name": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "title": {
+    "ja": "腹膜透析を継続した療養者の在宅終末期を支えた訪問看護支援",
+    "en": "Home-visit nursing support for home-based end-of-life care in a patient continuing peritoneal dialysis"
+  },
+  "authors": [
+    {
+      "name": {
+        "ja": "佐々木 早苗",
+        "en": "Sanae Sasaki"
+      }
+    },
+    {
+      "name": {
+        "ja": "上野 ゆり",
+        "en": "Yuri Ueno"
+      }
+    },
+    {
+      "name": {
+        "ja": "石川 武雅",
+        "en": "Takemasa Ishikawa"
+      }
+    }
+  ],
+  "affiliations": [
+    {
+      "ja": "ななーる訪問看護ステーション",
+      "en": "Nana-r Home-Visit Nursing Station"
+    },
+    {
+      "ja": "ななーる訪問看護デベロップメントセンター",
+      "en": "Nana-r Home-Vsit Nursing Develpoment Center"
+    }
+  ],
+  "abstract": {
+    "ja": "【目的】認知機能や身体機能が低下した腹膜透析（PD）療養者において，訪問看護が在宅療養継続にどのように寄与したかを検討した．\n【患者紹介】80歳代男性．認知機能障害および身体的ADLの低下により，セルフケアも家族の支援も困難な状況にあったが，訪問看護の介入のもと，自宅で最期までPDを継続した．\n【看護の実際】訪問看護師がPD手技を担い，食事や保清を含む生活支援を併せて提供．状態変化に応じて柔軟な対応が行われた．\n【考察】PD継続には医療・介護の連携が不可欠であり，現行制度では訪問看護に介護的役割も求められている．\n【結論】PD療養者の在宅継続支援には，訪問看護による包括的ケアと制度・多職種連携が重要である．",
+    "en": "Objective: To examine how home-visit nursing contributed to the continuation of home-based care for a patient undergoing peritoneal dialysis (PD) with declining cognitive and physical function. Patient presentation / Case presentation: An elderly man in his 80s with progressive cognitive impairment and decreased activities of daily living (ADLs) experienced significant challenges in both self-care and family support. Despite these limitations, he continued PD at home until the end of life with support from home-visit nursing services. Nursing practice / Intervention: Home-visit nurses took full responsibility for PD-related procedures while also providing daily assistance with meals and personal hygiene. Care was flexibly adapted to the patient's changing condition, helping ensure safe and stable home treatment. Discussion: The continuation of PD at home requires coordinated efforts across healthcare and caregiving services. Under the current insurance system, home-visit nurses are often expected to provide caregiving support in addition to medical care, particularly when formal caregiving services are limited. Conclusion: This case demonstrates that comprehensive home-visit nursing, encompassing both clinical procedures and daily life support, can enable patients with impaired self-care capacity to continue PD at home until the end of life. Enhancing interprofessional collaboration and system-level coordination is essential to support such home-based care."
+  },
+  "keywords": {
+    "ja": [
+      "腹膜透析，訪問看護，終末期，在宅看取り"
+    ],
+    "en": [
+      "peritoneal dialysis",
+      "home-visit nursing",
+      "end-of-life care",
+      "home death",
+      "care coordination"
+    ]
+  }
+}

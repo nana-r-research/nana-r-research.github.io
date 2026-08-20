@@ -50,6 +50,7 @@ function PublicationForm({ publication, onExit }: { publication?: EditablePublic
   const [published, setPublished] = useState<Published | null>(null);
   const isJapanese = form.language === "ja";
   const isEditing = Boolean(publication);
+  const isLinkOnly = form.manuscriptType === "External Link Only";
   const previewTitle = isJapanese ? form.titleJa : form.titleEn;
   const licenseLabel = LICENSE_OPTIONS.find((license) => license.value === form.license)?.label ?? "未設定";
 
@@ -61,6 +62,8 @@ function PublicationForm({ publication, onExit }: { publication?: EditablePublic
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const next = Object.fromEntries(Array.from(data.entries()).filter(([, value]) => typeof value === "string")) as Record<string, string>;
+    if (next.manuscriptType === "External Link Only" && (file || publication?.fileUrl)) return setError("PDFが登録されている研究成果は「リンクのみ」に変更できません。");
+    if (next.manuscriptType === "External Link Only" && !next.doi?.trim() && !next.journalUrl?.trim()) return setError("リンクのみの場合は、DOIまたは出版社ページURLを入力してください。");
     if (file && file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) return setError("PDFファイルを選択してください。");
     if (file && file.size > 25 * 1024 * 1024) return setError("PDFは25MB以下にしてください。");
     if (next.language === "ja" && Boolean(next.abstractJa?.trim()) !== Boolean(next.abstractEn?.trim())) return setError("抄録を入力する場合は、日本語と英語の両方を入力してください。");
@@ -124,7 +127,7 @@ function PublicationForm({ publication, onExit }: { publication?: EditablePublic
       <div className="preview-block"><p className="preview-label">論文タイトル</p><h2>{previewTitle}</h2>{isJapanese ? <p>{form.titleEn}</p> : null}</div>
       <div className="preview-block"><p className="preview-label">著者</p><p>{isJapanese ? form.authorsJa : form.authorsEn}</p>{isJapanese ? <p>{form.authorsEn}</p> : null}</div>
       <div className="preview-block"><p className="preview-label">掲載誌</p><p>{isJapanese ? form.journalJa : form.journalEn}（{form.year}）</p><p>DOI: {form.doi || "なし"}</p></div>
-      <div className="preview-block"><p className="preview-label">掲載ファイル</p><p>{file ? `${file.name}（${(file.size / 1024 / 1024).toFixed(1)} MB）` : publication?.fileUrl ? "現在のPDFを維持" : "PDFなし"}</p><p>{form.manuscriptType}</p><p>ライセンス：{licenseLabel}</p></div>
+      <div className="preview-block"><p className="preview-label">掲載ファイル</p><p>{isLinkOnly ? "出版社ページへのリンクのみ" : file ? `${file.name}（${(file.size / 1024 / 1024).toFixed(1)} MB）` : publication?.fileUrl ? "現在のPDFを維持" : "PDFなし"}</p><p>{isLinkOnly ? "リンクのみ（PDFなし・書誌情報のみ）" : form.manuscriptType}</p><p>ライセンス：{licenseLabel}</p></div>
     </div>
     {stage === "publishing" ? <p className="progress">{file ? `PDFをアップロードしています… ${progress}%` : isEditing ? "情報を更新しています…" : "書誌情報を登録しています…"}</p> : null}
     {error ? <p className="error">{error}</p> : null}
@@ -133,7 +136,7 @@ function PublicationForm({ publication, onExit }: { publication?: EditablePublic
 
   return <form className="panel" onSubmit={confirm}>
     <Steps current={1} />
-    {isEditing ? <div className="editing-heading"><p className="kicker">{publication?.id}</p><h2>公開済み情報を修正</h2><p>PDFを選び直さない場合、現在のPDFをそのまま使用します。</p></div> : null}
+    {isEditing ? <div className="editing-heading"><p className="kicker">{publication?.id}</p><h2>公開済み情報を修正</h2><p>{publication?.fileUrl ? "PDFを選び直さない場合、現在のPDFをそのまま使用します。" : "PDFは登録されていません。必要に応じて後から追加できます。"}</p></div> : null}
     <section className="form-section"><h2>基本情報</h2><div className="grid">
       <Field label="論文の言語" name="language"><select id="language" name="language" value={form.language} onChange={(event) => update("language", event.target.value)}><option value="en">英語論文</option><option value="ja">日本語論文</option></select></Field>
       <Field label="出版年" name="year" required><input id="year" name="year" type="number" min="1900" max="2100" required value={form.year} onChange={(event) => update("year", event.target.value)} /></Field>
@@ -151,6 +154,7 @@ function PublicationForm({ publication, onExit }: { publication?: EditablePublic
       <Field label="号" name="issue"><input id="issue" name="issue" defaultValue={form.issue} /></Field>
       <Field label="ページ" name="pages"><input id="pages" name="pages" placeholder="123–130" defaultValue={form.pages} /></Field>
       <Field label="DOI" name="doi"><input id="doi" name="doi" placeholder="10.xxxx/xxxxx" defaultValue={form.doi} /></Field>
+      <Field label="出版社ページURL" name="journalUrl" full hint="任意。DOIがない場合や、公式ページを直接指定する場合に入力"><input id="journalUrl" name="journalUrl" type="url" placeholder="https://..." defaultValue={form.journalUrl} /></Field>
     </div></section>
     <section className="form-section"><h2>抄録・キーワード</h2><div className="grid">
       {isJapanese ? <Field label="抄録（日本語）" name="abstractJa" full hint="任意。入力する場合は英語抄録も入力"><textarea id="abstractJa" name="abstractJa" defaultValue={form.abstractJa} /></Field> : null}
@@ -159,9 +163,9 @@ function PublicationForm({ publication, onExit }: { publication?: EditablePublic
       <Field label={isJapanese ? "キーワード（英語）" : "キーワード"} name="keywordsEn" full required hint="カンマ区切り"><input id="keywordsEn" name="keywordsEn" required defaultValue={form.keywordsEn} /></Field>
     </div></section>
     <section className="form-section"><h2>掲載ファイル</h2><div className="grid">
-      <Field label="原稿の種類" name="manuscriptType" full required><select id="manuscriptType" name="manuscriptType" value={form.manuscriptType} onChange={(event) => update("manuscriptType", event.target.value)}><option>Author Accepted Manuscript</option><option>Published Version</option><option>Preprint</option></select></Field>
-      <Field label="ライセンス" name="license" full hint="リポジトリに掲載するPDFへ適用する利用条件を選択"><select id="license" name="license" value={form.license ?? ""} onChange={(event) => update("license", event.target.value)}>{LICENSE_OPTIONS.map((license) => <option key={license.value || "unset"} value={license.value}>{license.label}</option>)}</select></Field>
-      <div className="field full"><label htmlFor="pdf">PDF</label><div className="file-drop"><input id="pdf" type="file" accept="application/pdf,.pdf" onChange={(event) => setFile(event.target.files?.[0] ?? null)} />{file ? <small>{file.name}（{(file.size / 1024 / 1024).toFixed(1)} MB）</small> : null}</div><small>{publication?.fileUrl ? "差し替える場合のみ選択してください。" : "任意。後から追加できます。選択する場合は、公開許諾を確認した25MB以下のPDFを使用してください。"}</small></div>
+      <Field label="原稿の種類" name="manuscriptType" full required><select id="manuscriptType" name="manuscriptType" value={form.manuscriptType} onChange={(event) => { const value = event.target.value; update("manuscriptType", value); if (value === "External Link Only") { setFile(null); update("license", ""); } }}><option>Author Accepted Manuscript</option><option>Published Version</option><option>Preprint</option><option value="External Link Only">リンクのみ（PDFなし・書誌情報のみ）</option></select></Field>
+      <Field label="ライセンス" name="license" full hint={isLinkOnly ? "PDFを掲載しないため「未設定」のままで構いません。" : "リポジトリに掲載するPDFへ適用する利用条件を選択"}><select id="license" name="license" value={form.license ?? ""} onChange={(event) => update("license", event.target.value)}>{LICENSE_OPTIONS.map((license) => <option key={license.value || "unset"} value={license.value}>{license.label}</option>)}</select></Field>
+      <div className="field full"><label htmlFor="pdf">PDF</label><div className="file-drop"><input id="pdf" type="file" accept="application/pdf,.pdf" disabled={isLinkOnly} onChange={(event) => setFile(event.target.files?.[0] ?? null)} />{file ? <small>{file.name}（{(file.size / 1024 / 1024).toFixed(1)} MB）</small> : null}</div><small>{isLinkOnly ? "リンクのみではPDFを登録しません。" : publication?.fileUrl ? "差し替える場合のみ選択してください。" : "任意。後から追加できます。選択する場合は、公開許諾を確認した25MB以下のPDFを使用してください。"}</small></div>
     </div></section>
     {error ? <p className="error">{error}</p> : null}
     <div className="actions">{isEditing ? <button className="button secondary" type="button" onClick={onExit}>キャンセル</button> : null}<button className="button" type="submit">内容を確認する</button></div>

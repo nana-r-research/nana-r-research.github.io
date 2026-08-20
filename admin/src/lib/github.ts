@@ -7,7 +7,7 @@ export type PublicationInput = {
   authorsEn: string; authorsJa?: string;
   affiliationsEn: string; affiliationsJa?: string;
   journalEn: string; journalJa?: string;
-  year: number; volume?: string; issue?: string; pages?: string; doi?: string;
+  year: number; volume?: string; issue?: string; pages?: string; doi?: string; journalUrl?: string;
   abstractEn?: string; abstractJa?: string;
   keywordsEn: string; keywordsJa?: string;
   manuscriptType: string; license?: string;
@@ -47,7 +47,12 @@ function validate(input: PublicationInput) {
     throw new Error("日本語論文の日英情報が不足しています。");
   }
   if (input.language === "ja" && Boolean(input.abstractJa?.trim()) !== Boolean(input.abstractEn?.trim())) throw new Error("抄録を入力する場合は、日本語と英語の両方を入力してください。");
-  if (!new Set(["Author Accepted Manuscript", "Published Version", "Preprint"]).has(input.manuscriptType)) throw new Error("原稿の種類を確認してください。");
+  if (!new Set(["Author Accepted Manuscript", "Published Version", "Preprint", "External Link Only"]).has(input.manuscriptType)) throw new Error("原稿の種類を確認してください。");
+  if (input.journalUrl?.trim()) {
+    try { if (!new URL(input.journalUrl).protocol.match(/^https?:$/)) throw new Error(); }
+    catch { throw new Error("出版社ページURLを確認してください。"); }
+  }
+  if (input.manuscriptType === "External Link Only" && !input.doi?.trim() && !input.journalUrl?.trim()) throw new Error("リンクのみの場合はDOIまたは出版社ページURLを入力してください。");
   if (!licenseByValue(input.license)) throw new Error("ライセンスを確認してください。");
 }
 
@@ -56,9 +61,9 @@ function recordFor(id: string, input: PublicationInput, existingFile?: { posted?
   const selectedLicense = licenseByValue(input.license);
   const repositoryFile = {
     type: input.manuscriptType,
-    url: hasNewPdf ? `/files/${id}.pdf` : existingFile?.url ?? "",
+    url: input.manuscriptType === "External Link Only" ? "" : hasNewPdf ? `/files/${id}.pdf` : existingFile?.url ?? "",
     posted: existingFile?.posted || new Date().toISOString().slice(0, 10),
-    ...(selectedLicense?.value ? { license: { name: selectedLicense.name, url: selectedLicense.url } } : {}),
+    ...(input.manuscriptType !== "External Link Only" && selectedLicense?.value ? { license: { name: selectedLicense.name, url: selectedLicense.url } } : {}),
   };
   const abstractEn = input.abstractEn?.trim() ?? "";
   const abstractJa = input.abstractJa?.trim() ?? "";
@@ -68,7 +73,7 @@ function recordFor(id: string, input: PublicationInput, existingFile?: { posted?
     journal: {
       name: input.language === "ja" ? { ja: input.journalJa || input.journalEn, en: input.journalEn } : input.journalEn,
       year: input.year, volume: input.volume?.trim() ?? "", issue: input.issue?.trim() ?? "", pages: input.pages?.trim() ?? "", doi,
-      url: doi ? `https://doi.org/${doi}` : "",
+      url: input.journalUrl?.trim() || (doi ? `https://doi.org/${doi}` : ""),
     },
     repository_file: repositoryFile,
   };
@@ -87,6 +92,7 @@ function recordFor(id: string, input: PublicationInput, existingFile?: { posted?
 
 export async function publishRecord(input: PublicationInput, pdf?: ArrayBuffer, existingId?: string) {
   validate(input);
+  if (input.manuscriptType === "External Link Only" && pdf) throw new Error("リンクのみではPDFを登録できません。");
   if (existingId && !/^NRR-\d{4}-\d{3}$/.test(existingId)) throw new Error("研究成果IDを確認してください。");
   type Ref = { object: { sha: string } }; type Commit = { tree: { sha: string } }; type Content = Array<{ name: string }>; type Sha = { sha: string }; type FileContent = { content: string };
   const ref = await github<Ref>(`/repos/${owner}/${repo}/git/ref/heads/${branch}`);
@@ -107,6 +113,7 @@ export async function publishRecord(input: PublicationInput, pdf?: ArrayBuffer, 
     const record = JSON.parse(Buffer.from(existing.content.replace(/\s/g, ""), "base64").toString("utf8"));
     existingFile = record.repository_file;
   }
+  if (input.manuscriptType === "External Link Only" && existingFile?.url) throw new Error("PDFが登録されている研究成果は「リンクのみ」に変更できません。");
   const record = recordFor(id, input, existingFile, Boolean(pdf));
   const jsonBlob = await github<Sha>(`/repos/${owner}/${repo}/git/blobs`, { method: "POST", body: JSON.stringify({ content: `${JSON.stringify(record, null, 2)}\n`, encoding: "utf-8" }) });
   const pdfBlob = pdf ? await github<Sha>(`/repos/${owner}/${repo}/git/blobs`, { method: "POST", body: JSON.stringify({ content: Buffer.from(pdf).toString("base64"), encoding: "base64" }) }) : undefined;
@@ -130,7 +137,7 @@ type RepositoryRecord = {
   title: string | { ja?: string; en?: string };
   authors: Array<{ name: string | { ja?: string; en?: string } }>;
   affiliations: Array<string | { ja?: string; en?: string }>;
-  journal: { name: string | { ja?: string; en?: string }; year: number; volume?: string; issue?: string; pages?: string; doi?: string };
+  journal: { name: string | { ja?: string; en?: string }; year: number; volume?: string; issue?: string; pages?: string; doi?: string; url?: string };
   repository_file: { type: string; url?: string; posted?: string; license?: { name?: string; url?: string } };
   abstract?: string | { ja?: string; en?: string };
   keywords: string[] | { ja?: string[]; en?: string[] };
@@ -159,7 +166,7 @@ export async function listPublicationDrafts(): Promise<EditablePublication[]> {
         authorsEn: record.authors.map((author) => localizedText(author.name, "en")).join("\n"), authorsJa: record.authors.map((author) => localizedText(author.name, "ja")).join("\n"),
         affiliationsEn: record.affiliations.map((affiliation) => localizedText(affiliation, "en")).join("\n"), affiliationsJa: record.affiliations.map((affiliation) => localizedText(affiliation, "ja")).join("\n"),
         journalEn: localizedText(record.journal.name, "en"), journalJa: localizedText(record.journal.name, "ja"),
-        year: String(record.journal.year), volume: record.journal.volume ?? "", issue: record.journal.issue ?? "", pages: record.journal.pages ?? "", doi: record.journal.doi ?? "",
+        year: String(record.journal.year), volume: record.journal.volume ?? "", issue: record.journal.issue ?? "", pages: record.journal.pages ?? "", doi: record.journal.doi ?? "", journalUrl: record.journal.url ?? "",
         abstractEn: localizedText(record.abstract, "en"), abstractJa: localizedText(record.abstract, "ja"),
         keywordsEn: localizedKeywords(record.keywords, "en").join(", "), keywordsJa: localizedKeywords(record.keywords, "ja").join(", "),
         manuscriptType: record.repository_file.type, license: license?.value ?? "",

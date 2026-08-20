@@ -51,12 +51,12 @@ function validate(input: PublicationInput) {
   if (!licenseByValue(input.license)) throw new Error("ライセンスを確認してください。");
 }
 
-function recordFor(id: string, input: PublicationInput, existingFile?: { posted?: string; url?: string }) {
+function recordFor(id: string, input: PublicationInput, existingFile?: { posted?: string; url?: string }, hasNewPdf = false) {
   const doi = (input.doi?.trim() ?? "").replace(/^https?:\/\/(?:dx\.)?doi\.org\//i, "");
   const selectedLicense = licenseByValue(input.license);
   const repositoryFile = {
     type: input.manuscriptType,
-    url: existingFile?.url || `/files/${id}.pdf`,
+    url: hasNewPdf ? `/files/${id}.pdf` : existingFile?.url ?? "",
     posted: existingFile?.posted || new Date().toISOString().slice(0, 10),
     ...(selectedLicense?.value ? { license: { name: selectedLicense.name, url: selectedLicense.url } } : {}),
   };
@@ -88,7 +88,6 @@ function recordFor(id: string, input: PublicationInput, existingFile?: { posted?
 export async function publishRecord(input: PublicationInput, pdf?: ArrayBuffer, existingId?: string) {
   validate(input);
   if (existingId && !/^NRR-\d{4}-\d{3}$/.test(existingId)) throw new Error("研究成果IDを確認してください。");
-  if (!existingId && !pdf) throw new Error("PDFを選択してください。");
   type Ref = { object: { sha: string } }; type Commit = { tree: { sha: string } }; type Content = Array<{ name: string }>; type Sha = { sha: string }; type FileContent = { content: string };
   const ref = await github<Ref>(`/repos/${owner}/${repo}/git/ref/heads/${branch}`);
   const headSha = ref.object.sha;
@@ -108,7 +107,7 @@ export async function publishRecord(input: PublicationInput, pdf?: ArrayBuffer, 
     const record = JSON.parse(Buffer.from(existing.content.replace(/\s/g, ""), "base64").toString("utf8"));
     existingFile = record.repository_file;
   }
-  const record = recordFor(id, input, existingFile);
+  const record = recordFor(id, input, existingFile, Boolean(pdf));
   const jsonBlob = await github<Sha>(`/repos/${owner}/${repo}/git/blobs`, { method: "POST", body: JSON.stringify({ content: `${JSON.stringify(record, null, 2)}\n`, encoding: "utf-8" }) });
   const pdfBlob = pdf ? await github<Sha>(`/repos/${owner}/${repo}/git/blobs`, { method: "POST", body: JSON.stringify({ content: Buffer.from(pdf).toString("base64"), encoding: "base64" }) }) : undefined;
   const treeEntries = [

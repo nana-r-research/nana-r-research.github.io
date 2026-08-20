@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     await requireAdmin();
     const body = await request.json() as { blobUrl?: string; metadata?: PublicationInput; id?: string };
     blobUrl = body.blobUrl;
-    if (!body.metadata || (!body.id && !body.blobUrl)) return Response.json({ error: "PDFまたは書誌情報がありません。" }, { status: 400 });
+    if (!body.metadata) return Response.json({ error: "書誌情報がありません。" }, { status: 400 });
     let pdf: ArrayBuffer | undefined;
     if (body.blobUrl) {
       const result = await get(body.blobUrl, { access: "private", useCache: false });

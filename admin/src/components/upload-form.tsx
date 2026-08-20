@@ -61,7 +61,6 @@ function PublicationForm({ publication, onExit }: { publication?: EditablePublic
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const next = Object.fromEntries(Array.from(data.entries()).filter(([, value]) => typeof value === "string")) as Record<string, string>;
-    if (!publication && !file) return setError("PDFを選択してください。");
     if (file && file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) return setError("PDFファイルを選択してください。");
     if (file && file.size > 25 * 1024 * 1024) return setError("PDFは25MB以下にしてください。");
     if (next.language === "ja" && Boolean(next.abstractJa?.trim()) !== Boolean(next.abstractEn?.trim())) return setError("抄録を入力する場合は、日本語と英語の両方を入力してください。");
@@ -125,9 +124,9 @@ function PublicationForm({ publication, onExit }: { publication?: EditablePublic
       <div className="preview-block"><p className="preview-label">論文タイトル</p><h2>{previewTitle}</h2>{isJapanese ? <p>{form.titleEn}</p> : null}</div>
       <div className="preview-block"><p className="preview-label">著者</p><p>{isJapanese ? form.authorsJa : form.authorsEn}</p>{isJapanese ? <p>{form.authorsEn}</p> : null}</div>
       <div className="preview-block"><p className="preview-label">掲載誌</p><p>{isJapanese ? form.journalJa : form.journalEn}（{form.year}）</p><p>DOI: {form.doi || "なし"}</p></div>
-      <div className="preview-block"><p className="preview-label">掲載ファイル</p><p>{file ? `${file.name}（${(file.size / 1024 / 1024).toFixed(1)} MB）` : "現在のPDFを維持"}</p><p>{form.manuscriptType}</p><p>ライセンス：{licenseLabel}</p></div>
+      <div className="preview-block"><p className="preview-label">掲載ファイル</p><p>{file ? `${file.name}（${(file.size / 1024 / 1024).toFixed(1)} MB）` : publication?.fileUrl ? "現在のPDFを維持" : "PDFなし"}</p><p>{form.manuscriptType}</p><p>ライセンス：{licenseLabel}</p></div>
     </div>
-    {stage === "publishing" ? <p className="progress">{file ? `PDFをアップロードしています… ${progress}%` : "情報を更新しています…"}</p> : null}
+    {stage === "publishing" ? <p className="progress">{file ? `PDFをアップロードしています… ${progress}%` : isEditing ? "情報を更新しています…" : "書誌情報を登録しています…"}</p> : null}
     {error ? <p className="error">{error}</p> : null}
     <div className="actions"><button className="button secondary" type="button" onClick={() => setStage("edit")} disabled={stage === "publishing"}>修正する</button><button className="button" type="button" onClick={publish} disabled={stage === "publishing"}>この内容で{isEditing ? "更新" : "公開"}する</button></div>
   </section>;
@@ -162,7 +161,7 @@ function PublicationForm({ publication, onExit }: { publication?: EditablePublic
     <section className="form-section"><h2>掲載ファイル</h2><div className="grid">
       <Field label="原稿の種類" name="manuscriptType" full required><select id="manuscriptType" name="manuscriptType" value={form.manuscriptType} onChange={(event) => update("manuscriptType", event.target.value)}><option>Author Accepted Manuscript</option><option>Published Version</option><option>Preprint</option></select></Field>
       <Field label="ライセンス" name="license" full hint="リポジトリに掲載するPDFへ適用する利用条件を選択"><select id="license" name="license" value={form.license ?? ""} onChange={(event) => update("license", event.target.value)}>{LICENSE_OPTIONS.map((license) => <option key={license.value || "unset"} value={license.value}>{license.label}</option>)}</select></Field>
-      <div className="field full"><label className={isEditing ? "" : "required"} htmlFor="pdf">PDF</label><div className="file-drop"><input id="pdf" type="file" accept="application/pdf,.pdf" required={!isEditing} onChange={(event) => setFile(event.target.files?.[0] ?? null)} />{file ? <small>{file.name}（{(file.size / 1024 / 1024).toFixed(1)} MB）</small> : null}</div><small>{isEditing ? "差し替える場合のみ選択してください。" : "公開許諾を確認したPDFを選択してください。最大25MB。"}</small></div>
+      <div className="field full"><label htmlFor="pdf">PDF</label><div className="file-drop"><input id="pdf" type="file" accept="application/pdf,.pdf" onChange={(event) => setFile(event.target.files?.[0] ?? null)} />{file ? <small>{file.name}（{(file.size / 1024 / 1024).toFixed(1)} MB）</small> : null}</div><small>{publication?.fileUrl ? "差し替える場合のみ選択してください。" : "任意。後から追加できます。選択する場合は、公開許諾を確認した25MB以下のPDFを使用してください。"}</small></div>
     </div></section>
     {error ? <p className="error">{error}</p> : null}
     <div className="actions">{isEditing ? <button className="button secondary" type="button" onClick={onExit}>キャンセル</button> : null}<button className="button" type="submit">内容を確認する</button></div>

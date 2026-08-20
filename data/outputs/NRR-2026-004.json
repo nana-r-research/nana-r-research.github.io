@@ -1,0 +1,46 @@
+{
+  "id": "NRR-2026-004",
+  "language": "en",
+  "journal": {
+    "name": "Frontiers in Public Health",
+    "year": 2026,
+    "volume": "14",
+    "issue": "",
+    "pages": "1755718",
+    "doi": "10.3389/fpubh.2026.1755718",
+    "url": "https://doi.org/10.3389/fpubh.2026.1755718"
+  },
+  "repository_file": {
+    "type": "Author Accepted Manuscript",
+    "url": "/files/NRR-2026-004.pdf",
+    "posted": "2026-08-20",
+    "license": {
+      "name": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "title": "Intelligent flexibility in an aging society: lessons from Japan's home-visit nursing system",
+  "authors": [
+    {
+      "name": "Takemasa Ishikawa"
+    },
+    {
+      "name": "Haruka Imura"
+    },
+    {
+      "name": "Yoshiyuki Takashima"
+    }
+  ],
+  "affiliations": [
+    "Nana-r Home-visit Nursing Development Center",
+    "Graduate School of Biomedical and Health Science, Hiroshima University",
+    "Faculty of Nursing, School of Medicine, Nara Medical University"
+  ],
+  "keywords": [
+    "community care",
+    "health system governance",
+    "home-visit nursing",
+    "Japan",
+    "long-term care"
+  ]
+}

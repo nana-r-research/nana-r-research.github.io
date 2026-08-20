@@ -1,0 +1,69 @@
+{
+  "id": "NRR-2026-007",
+  "language": "ja",
+  "journal": {
+    "name": {
+      "ja": "実践政策学",
+      "en": "Policy and Practice Studies"
+    },
+    "year": 2025,
+    "volume": "11",
+    "issue": "2",
+    "pages": "235-242",
+    "doi": "10.69287/ppseb.11.2_235",
+    "url": "https://doi.org/10.69287/ppseb.11.2_235"
+  },
+  "repository_file": {
+    "type": "Author Accepted Manuscript",
+    "url": "/files/NRR-2026-007.pdf",
+    "posted": "2026-08-20",
+    "license": {
+      "name": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "title": {
+    "ja": "過疎地域における医療・介護資源と費用推移の構造的特徴 ―全国市町村データ(2015~2022 年)の二方向固定効果モデルによる検討―",
+    "en": "Trends in the structural characteristics of healthcare and long-term care resources and expenditures in depopulated areas: A two-way fixed-effects analysis of nationwide municipal data in Japan, 2015-2022"
+  },
+  "authors": [
+    {
+      "name": {
+        "ja": "石川 武雅",
+        "en": "Takemasa Ishikawa"
+      }
+    },
+    {
+      "name": {
+        "ja": "高島 佳之",
+        "en": "Yoshiyuki Takashima"
+      }
+    }
+  ],
+  "affiliations": [
+    {
+      "ja": "ななーる訪問看護デベロップメントセンター",
+      "en": "Nana-r Home-visit Nursing Development Center"
+    },
+    {
+      "ja": "奈良県立医科大学医学部",
+      "en": "School of Medicine, Nara Medical University"
+    }
+  ],
+  "abstract": {
+    "ja": "本研究の目的は、過疎地域と非過疎地域における医療・介護資源および費用の推移を包括的に記述・比較することである。2015～2022年の全国1,741市町村における医療・介護資源に関するパネルデータを分析対象とした。公的統計から人口（または高齢者人口）当たりの医療・介護資源と費用に関する指標を用い、「過疎地域×年次」の交互作用係数とした固定効果モデルにより過疎・非過疎地域間の年次推移の傾きの差を評価した。第1種過誤の制御としてBenjamini-Hochberg法によるFalse Discovery Rate補正を行った。結果として、病院数は過疎地域で有意に増加の程度が大きく（β = 0.07）、一般診療所数（β = 0.93）および在宅療養支援診療所数（β = 0.34）も相対的に増加した一方、訪問看護ステーション数（β = −0.20）と訪問看護師数（β = −0.31）は過疎地域における増加の程度が小さかった。介護資源においては、過疎地域において特別養護老人ホーム定員の増加の程度が大きく（β = 0.20）、介護老人保健施設定員の減少の程度が小さかった（β = 0.07）。費用面では総医療費（β = −3,305.21）と入院医療費（β = −846.68）の伸びが小さい一方、介護保険給付費（認定者当たり）は大きく増加（β = 9,123.19）した。これらは、過疎地域における医療資源の縮小と介護資源の増大を示唆し、在宅療養支援を含む訪問看護基盤の強化や地理的アクセスを踏まえた資源配置、回避可能入院などアウトカムを用いた政策評価の必要性が示された。",
+    "en": "This study aimed to comprehensively describe and compare trends in healthcare and long-term care resources and expenditures between depopulated and non-depopulated areas in Japan. We analysed panel data for all 1,741 municipalities from 2015 to 2022. Using indicators of healthcare and long-term care resources and expenditures per population (or per population aged ≥ 65 years) derived from official statistics, we fitted a two-way fixedeffects model (municipality and year), including an interaction between the depopulated-area indicator and year to evaluate differences in annual trends. To control the type I error rate across multiple outcomes, we applied false discovery rate control using the Benjamini-Hochberg procedure. Depopulated areas were defined according to the national Act on Special Measures for the Promotion of Independence of Depopulated Areas. Standard errors were clustered by municipality. In depopulated areas, hospitals (β = 0.07), general clinics (β = 0.93) and home-care support clinics (β = 0.34) increased more than in non-depopulated areas, whereas growth in home-visit nursing agencies (β = –0.20) and home-visit nurses (β = –0.31) was slower. Regarding long-term care resources, beds in special nursing homes for older people (β = 0.20) and in long-term care facilities (β = 0.07) increased more in depopulated areas. For expenditures, increases in total medical expenditure (β = –3,305.21) and inpatient medical expenditure (β = –846.68) were smaller, whereas long-term care insurance benefits per recipient increased more (β = 9,123.19) in depopulated areas. These findings suggest a coexistence of healthcare retraction and long-term care expansion in depopulated regions, underscoring the need to strengthen the foundation for home-visit nursing, allocate resources with attention to geographic accessibility and conduct policy evaluations linked to outcomes such as avoidable hospitalisations."
+  },
+  "keywords": {
+    "ja": [
+      "過疎地域",
+      "医療資源",
+      "介護資源",
+      "医療費・介護費",
+      "二方 向固定効果モデル"
+    ],
+    "en": [
+      "none"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "NRR-2026-005",
+  "language": "en",
+  "journal": {
+    "name": "Cureus",
+    "year": 2025,
+    "volume": "17",
+    "issue": "3",
+    "pages": "e80878",
+    "doi": "10.7759/cureus.80878",
+    "url": "https://doi.org/10.7759/cureus.80878"
+  },
+  "repository_file": {
+    "type": "Author Accepted Manuscript",
+    "url": "/files/NRR-2026-005.pdf",
+    "posted": "2026-08-20",
+    "license": {
+      "name": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "title": "Home-Based Rehabilitation With Frenkel’s Exercises for Adrenomyeloneuropathy: A Case Report",
+  "authors": [
+    {
+      "name": "Takemasa Ishikawa"
+    }
+  ],
+  "affiliations": [
+    "Nana-r Home-Visit Nursing Development Center"
+  ],
+  "abstract": "Adrenoleukodystrophy (ALD) encompasses a spectrum of X-linked genetic disorders, including the adult-onset adrenomyeloneuropathy (AMN) phenotype. We report the case of a 32-year-old male with AMN and examine the impact of a tailored home-based rehabilitation regimen, specifically employing Frenkel’s exercises. The patient displayed classic AMN symptoms, including spastic paraparesis, peripheral neuropathy, and urinary disturbances. Initial assessments revealed significant ataxia-related impairments, particularly in gait, stance, and heel-shin slide. A home-visit nurse collaborated with the patient to develop and implement a personalized regimen utilizing Frenkel’s exercises. Over one month, the patient demonstrated remarkable improvement, reducing his Scale for the Assessment and Rating of Ataxia score from 10 to 5. Detailed analysis revealed specific enhancements in gait, stance, and fine motor control, aligning with the goals of Frenkel’s exercises. These findings suggest that Frenkel’s exercises can be a valuable addition to AMN rehabilitation, addressing ataxia-related motor deficits. While recognizing AMN’s complexity and individual variability, further research is essential to refine rehabilitation strategies. Long-term follow-up studies are needed to assess intervention sustainability and its impact on the ALD spectrum’s overall disease progression and quality of life.",
+  "keywords": [
+    "adrenomyeloneuropathy (amn)",
+    "frenkel’s exercises",
+    "home-based care",
+    "home-visit nurse",
+    "rehabilitation",
+    "x-linked adrenoleukodystrophy (x-ald)"
+  ]
+}

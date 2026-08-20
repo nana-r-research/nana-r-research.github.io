@@ -1,0 +1,45 @@
+{
+  "id": "NRR-2026-010",
+  "language": "en",
+  "journal": {
+    "name": "The International Journal of Health Planning and Management",
+    "year": 2026,
+    "volume": "42",
+    "issue": "1",
+    "pages": "82-93",
+    "doi": "10.1002/hpm.70031",
+    "url": "https://doi.org/10.1002/hpm.70031"
+  },
+  "repository_file": {
+    "type": "Preprint",
+    "url": "/files/NRR-2026-010.pdf",
+    "posted": "2026-08-20",
+    "license": {
+      "name": "All rights reserved",
+      "url": ""
+    }
+  },
+  "title": "Demographic Moderation of Healthcare Expenditure Associated With Home‐Based Deaths: A Longitudinal Ecological Study in Japanese Municipalities, 2015–2022",
+  "authors": [
+    {
+      "name": "Takemasa Ishikawa"
+    },
+    {
+      "name": "Yoshiyuki Takashima"
+    }
+  ],
+  "affiliations": [
+    "Nana-r Home-Visit Nursing Development Center",
+    "Faculty of Nursing, School of Medicine, Nara Medical University"
+  ],
+  "abstract": "Introduction\nHome-based end-of-life care has gained policy attention in Japan. However, its fiscal consequences remain unclear. Rising healthcare costs and rapid population ageing heighten the policy relevance of such evidence.\n\nObjectives\nTo assess how the municipal home-based death rate relates to per capita medical and long-term care insurance (LTCI) spending, and whether ageing modifies these associations.\n\nMethods\nWe analysed panel data from 1741 municipalities (2015–2022). Outcomes were log-transformed total and inpatient medical spending per resident and LTCI spending per certified individual. The exposure was the one-year-lagged home-based death rate, defined as home deaths divided by all deaths. Fixed-effects regressions controlled for year, ageing rate, population density (per km2 of habitable land), income-tax revenue, and health and long-term care resources. Cluster-robust standard errors addressed within-municipality serial correlation. All analyses were conducted in Python 3.11 using the linearmodels package.\n\nResults\nThe mean home-based death rate was 12.3% (SD = 5.72). Each one-percentage-point increase predicted 0.001 (95% CI: 1.178 × 10^−4–0.0018) and 0.001 (95% CI: 1.900 × 10^10–0.001) log-point increases in total and inpatient spending, with no association for LTCI. Ageing moderated this relationship: at approximately 39.5% ageing, higher home-based death rates predicted lower medical costs. Greater population density (total only) and lower taxable income were also associated with higher medical spending.\n\nConclusion\nThe fiscal impact of home-based deaths is context dependent. In more aged municipalities, promoting home dying may yield medical savings, whereas younger areas may face short-term cost growth. Distinct cost dynamics between medical and LTCI systems warrant locally tailored end-of-life policies.",
+  "keywords": [
+    "ageing population",
+    "end-of-life care",
+    "fixed-effects model",
+    "healthcare expenditure",
+    "home-based death",
+    "municipal-level study",
+    "panel data analysis"
+  ]
+}

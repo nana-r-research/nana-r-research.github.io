@@ -1,0 +1,35 @@
+{
+  "id": "NRR-2026-009",
+  "language": "en",
+  "journal": {
+    "name": "Home Health Care Management & Practice",
+    "year": 2025,
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "doi": "10.1177/10848223251397543",
+    "url": "https://doi.org/10.1177/10848223251397543"
+  },
+  "repository_file": {
+    "type": "Author Accepted Manuscript",
+    "url": "/files/NRR-2026-009.pdf",
+    "posted": "2026-08-20",
+    "license": {
+      "name": "All rights reserved",
+      "url": ""
+    }
+  },
+  "title": "Association Between Long-Term Care Insurance Certification and Early Home-Visit Nursing Frequency in Older Patients With Heart Failure in Japan",
+  "authors": [
+    {
+      "name": "Takemasa Ishikawa"
+    }
+  ],
+  "affiliations": [
+    "Nana-r Home-Visit Nursing Development Center"
+  ],
+  "abstract": "Home-visit nursing can reduce early readmissions and improve quality of life in older patients with heart failure (HF). In Japan, allocation of home-visit nursing often depends on Long-Term Care Insurance (LTCI) certification, which is determined primarily by functional status within budgets. This study examined whether LTCI certification is associated with the frequency of early home-visit nursing. We retrospectively analyzed 88 patients with HF who initiated home-visit nursing at a single agency between 2014 and 2024. The outcome was the number of visits within the initial 2 weeks comparing patients with and without LTCI. Negative binomial regression estimated incidence rate ratios (IRR), adjusting for age, sex, activities of daily living (ADL), physician-issued special direction, and eligibility under Separate Tables 7 and 8 of the medical insurance system. The median age was 86 years [IQR 82-90], and 74 patients (84.1%) were LTCI-certified. Cross-tabulation showed no significant association between LTCI certification and ADL level (χ² = 6.60, df = 3, P = .086). LTCI certification was associated with fewer visits (IRR = 0.67, 95% CI 0.49-0.91, P = .011). Compared with ADL “independent,” the “bed-bound” category received more visits (IRR = 1.99, 95% CI 1.28-3.10, P = .002). Physician-issued special direction was associated with higher visit frequency (IRR = 3.39, 95% CI 2.59-4.48, P < .001). These findings suggest that function-based, budget-capped frameworks may under-allocate nursing intensity for medically complex HF patients. Aligning visit planning with medical risk in the early post-discharge period may improve equity and care quality.",
+  "keywords": [
+    "heart failure home-visit nursing long-term care insurance activities of daily living healthcare policy resource allocation"
+  ]
+}

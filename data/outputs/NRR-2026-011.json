@@ -1,0 +1,54 @@
+{
+  "id": "NRR-2026-011",
+  "language": "en",
+  "journal": {
+    "name": "BMC Nursing",
+    "year": 2026,
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "doi": "10.1186/s12912-026-05418-w",
+    "url": "https://doi.org/10.1186/s12912-026-05418-w"
+  },
+  "repository_file": {
+    "type": "Published Version",
+    "url": "/files/NRR-2026-011.pdf",
+    "posted": "2026-10-08",
+    "license": {
+      "name": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "title": "Guideline-informed AI chat access and perceived mental effort in a simulated home-visit nursing task: a randomized controlled trial",
+  "authors": [
+    {
+      "name": "Takemasa Ishikawa"
+    },
+    {
+      "name": "Haruka Imura"
+    },
+    {
+      "name": "Tomomi Kitazawa"
+    },
+    {
+      "name": "Yoshiyuki Takashima"
+    }
+  ],
+  "affiliations": [
+    "Nana-r Home-visit Nursing Development Center, Tekix Corporation",
+    "Department of Perioperative and Critical Care Management, Graduate School of Biomedical and Health Sciences, Hiroshima University",
+    "Faculty of Education, Shizuoka University, Shizuoka",
+    "Faculty of Nursing, School of Medicine, Nara Medical University"
+  ],
+  "abstract": "Background\nHome-visit nurses often make autonomous clinical judgments in patients’ homes, where access to colleagues and evidence-based resources is limited. Guideline-informed artificial intelligence (AI) systems may facilitate access to clinical information, but evidence of their effects on nurses’ perceived mental effort remains limited. This study examined whether access to a guideline-informed AI chat system was associated with perceived mental effort, task difficulty, and confidence in answer correctness during a simulated home-visit nursing task.\n\nMethods\nThis web-based randomized controlled trial was conducted in Japan from March 9 to March 27, 2026. Home-visit nurses were randomly allocated 1:1 to AI or non-AI groups. Both groups completed a simulated task involving an older adult with chronic heart failure living alone. The AI group could use a NotebookLM system preloaded with publicly available clinical guidelines, whereas the comparison group was instructed not to use external resources. The primary outcome was perceived mental effort, assessed using a 9-point single-item rating based on Paas’ scale. The exploratory secondary outcomes were perceived task difficulty and confidence in answer correctness. The primary analyses used a complete-case approach and included participants who completed the task and provided post-task outcome data. Outcomes were analyzed using analysis of covariance adjusted for home-visit nursing experience, non-home-visit nursing experience, and educational attainment.\n\nResults\nOf 140 randomized participants, 105 completed the task and were included in the complete-case analysis: 53 in the non-AI group and 52 in the AI group. Compared with the non-AI group, the AI group reported lower perceived mental effort (adjusted mean difference − 1.13, 95% CI -1.81 to -0.45), lower perceived task difficulty (-0.74, 95% CI -1.37 to -0.12), and higher confidence in answer correctness (0.71, 95% CI 0.14 to 1.27).\n\nConclusions\nAmong participants who completed the task, guideline-informed AI chat access was associated with lower perceived mental effort and task difficulty and higher confidence in answer correctness than no access to external resources. These are complete-case, not intention-to-treat estimates; the study neither isolated the independent effect of AI nor evaluated clinical reasoning quality, accuracy, or safety.\n\nTrial registration\nUMIN Clinical Trials Registry, UMIN000061415. Retrospectively registered on 30 April 2026.",
+  "keywords": [
+    "Artificial intelligence",
+    "Home-visit nursing",
+    "Clinical reasoning",
+    "Evidence-informed practice",
+    "Cognitive load",
+    "Mental effort",
+    "Nursing practice",
+    "Randomized controlled trial"
+  ]
+}
